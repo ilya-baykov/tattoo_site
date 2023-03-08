@@ -29,17 +29,48 @@ class MainData:
         return f"Экземпляр класса {self.__title} {self.__header} "
 
 
+class TattooStyle:
+    __TATTOO_STYLE_DICT = {}
+
+    def __init__(self, position: int, style_en: str, style_ru: str):
+        self.__position = position
+        self.__style_en = style_en
+        self.__style_ru = style_ru
+        TattooStyle.__TATTOO_STYLE_DICT.setdefault(position, []).extend([style_en, style_ru])
+
+    @property
+    def position(self):
+        return self.__position
+
+    @property
+    def style_en(self):
+        return self.__style_en
+
+    @property
+    def style_ru(self):
+        return self.__style_ru
+
+    @classmethod
+    def tattoo_style_dict(cls):
+        return cls.__TATTOO_STYLE_DICT
+
+    def __str__(self):
+        return f"({self.__position}, {self.__style_en}, {self.__style_ru}"
+
+
+test = TattooStyle(1, "Традиционный стиль (Олд Скул)", "oldschool")
+
 main_menu_info_cls = MainData("Tattoo", "Татуировка", "main_text")
 history_info = MainData("History", "История", "history_text")
 TATTOO_STYLE_DICT = {
-    1: ["Традиционный стиль (Олд Скул)", "OldSchool"],
-    2: ["Нью скул", "NewSchool"],
-    3: ["Реализм", "Realism"],
-    4: ["Биомеханика", "Biomechanics"],
-    5: ["Графика", "Graphic"],
-    6: ["Японские татуировки", "Japanese"],
-    7: ["Блэкворк", "Blackwork"],
-    8: ["Леттеринг", "Lettering"],
-    9: ["Чикано", "Chicano"],
-    10: ["Орнаментал", "Ornamental"]
+    1: ["Традиционный стиль (Олд Скул)", "oldschool"],
+    2: ["Нью скул", "newschool"],
+    3: ["Реализм", "realism"],
+    4: ["Биомеханика", "biomechanics"],
+    5: ["Графика", "graphic"],
+    6: ["Японские татуировки", "japanese"],
+    7: ["Блэкворк", "blackwork"],
+    8: ["Леттеринг", "lettering"],
+    9: ["Чикано", "chicano"],
+    10: ["Орнаментал", "ornamental"]
 }
