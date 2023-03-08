@@ -1,7 +1,8 @@
-from .support_cls import *
+from support_cls import *
 
 main_menu_info_cls = MainData("Tattoo", "Татуировка", "main_text")
 history_info = MainData("History", "История", "history_text")
+
 ################   Экземпляры класса TattooStyle   #####################################################################
 oldSchool = TattooStyle(1, "OldSchool", "Традиционный стиль (Олд Скул)")
 newSchool = TattooStyle(2, "NewSchool", "Нью скул")
@@ -13,4 +14,3 @@ blackwork = TattooStyle(7, "Blackwork", "Блэкворк")
 lettering = TattooStyle(8, "Lettering", "Леттеринг")
 chicano = TattooStyle(9, "Chicano", "Чикано")
 ornamental = TattooStyle(10, "Ornamental", "Орнаментал")
-

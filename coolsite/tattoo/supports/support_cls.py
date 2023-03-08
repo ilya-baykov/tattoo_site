@@ -56,15 +56,4 @@ class TattooStyle:
         return f"({self.__position}, {self.__style_en}, {self.__style_ru}"
 
 
-TATTOO_STYLE_DICT = {
-    1: ["Традиционный стиль (Олд Скул)", "oldschool"],
-    2: ["Нью скул", "newschool"],
-    3: ["Реализм", "realism"],
-    4: ["Биомеханика", "biomechanics"],
-    5: ["Графика", "graphic"],
-    6: ["Японские татуировки", "japanese"],
-    7: ["Блэкворк", "blackwork"],
-    8: ["Леттеринг", "lettering"],
-    9: ["Чикано", "chicano"],
-    10: ["Орнаментал", "ornamental"]
-}
+
