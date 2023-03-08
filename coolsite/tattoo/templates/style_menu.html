@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} Styles {% endblock %}
+{% block content %}
+    <ul>
+        {% for position , style in style_list.items %}
+            <a  href=""> {{position}} {{style}}</a><br>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

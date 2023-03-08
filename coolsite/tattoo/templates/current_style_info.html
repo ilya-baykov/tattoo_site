@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    {% if availability_check %}
+        {{current_style}}
+    {% else %}
+        Error
+    {% endif %}
+{% endblock %}
+
+{% block content %} {% endblock %}

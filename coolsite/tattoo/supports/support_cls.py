@@ -31,3 +31,15 @@ class MainData:
 
 main_menu_info_cls = MainData("Tattoo", "Татуировка", "main_text")
 history_info = MainData("History", "История", "history_text")
+TATTOO_STYLE_DICT = {
+    1: ["Традиционный стиль (Олд Скул)", "OldSchool"],
+    2: ["Нью скул", "NewSchool"],
+    3: ["Реализм", "Realism"],
+    4: ["Биомеханика", "Biomechanics"],
+    5: ["Графика", "Graphic"],
+    6: ["Японские татуировки", "Japanese"],
+    7: ["Блэкворк", "Blackwork"],
+    8: ["Леттеринг", "Lettering"],
+    9: ["Чикано", "Chicano"],
+    10: ["Орнаментал", "Ornamental"]
+}

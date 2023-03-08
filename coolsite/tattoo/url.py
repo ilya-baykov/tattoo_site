@@ -5,6 +5,8 @@ from . import views
 
 urlpatterns = [
     path('', views.main_menu),
-    path('/history', views.history)
+    path('/history', views.history),
+    path('/style', views.style_menu),
+    path('/style/<str:current_style>', views.current_style_fn),
 
 ]
