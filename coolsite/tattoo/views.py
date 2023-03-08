@@ -4,6 +4,9 @@ from .supports import instances_cls as inst
 
 
 # Create your views here.
+# translator = dict(zip([sc.TattooStyle.tattoo_style_en_list()], [sc.TattooStyle.tattoo_style_ru_list()]))
+
+
 def main_menu(request):
     contex = {
         "title_info": inst.main_menu_info_cls.title,  # Возвращает текст для <title>
@@ -30,8 +33,17 @@ def style_menu(request):
 
 
 def current_style_fn(request, current_style):
+    if sc.TattooStyle.availability_check(current_style):
+        info = sc.TattooStyle.get_info(current_style)
+        header = info[1]
+    else:
+        header = ""
+        info = ["", "", "", ""]
     contex = {
-        "availability_check": current_style in inst.TATTOO_STYLE_DICT.values(),
-        "current_style": current_style
+        "availability_check": True,
+        "current_style_en": current_style,
+        "header": header,
+        "description": info[2],
+        "position": info[3]
     }
     return render(request, "current_style_info.html", context=contex)
