@@ -24,7 +24,7 @@ def history(request):
 
 def style_menu(request):
     contex = {
-        "style_list": inst.TATTOO_STYLE_DICT  # Возвращает список всех стилей
+        "style_list": sc.TattooStyle.tattoo_style_dict()  # Возвращает словарь со всеми стилями
     }
     return render(request, "style_menu.html", context=contex)
 
