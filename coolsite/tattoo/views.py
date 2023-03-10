@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .supports import support_cls as sc
 from .supports import instances_cls as inst
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -32,13 +34,10 @@ def style_menu(request):
     return render(request, "style_menu.html", context=contex)
 
 
-def current_style_fn(request, current_style):
+def current_style_fn(request, current_style: str):
     info = sc.TattooStyle.get_info(current_style)
     if isinstance(info, str):
-        contex = {
-            "exception_description": info
-        }
-        return render(request, "ex_current_style.html", context=contex)
+        return render(request, "ex_current_style.html", context={"exception_description": info})
     contex = {
         "availability_check": True,
         "current_style_en": current_style,
@@ -47,18 +46,12 @@ def current_style_fn(request, current_style):
         "position": info[3]
     }
     return render(request, "current_style_info.html", context=contex)
-# def current_style_fn(request, current_style):
-#     if sc.TattooStyle.availability_check(current_style):
-#         info = sc.TattooStyle.get_info(current_style)
-#         header = info[1]
-#     else:
-#         header = ""
-#         info = ["", "", "", ""]
-#     contex = {
-#         "availability_check": True,
-#         "current_style_en": current_style,
-#         "header": header,
-#         "description": info[2],
-#         "position": info[3]
-#     }
-#     return render(request, "current_style_info.html", context=contex)
+
+
+def current_style_int(request, current_style: int):
+    counter_style = sc.TattooStyle.tattoo_style_counter()
+    if counter_style >= current_style > 0:
+        style_position = sc.TattooStyle.tattoo_style_en_list()[current_style - 1]
+        return HttpResponseRedirect(f"/tattoo/style/{style_position}")
+    return render(request, "ex_current_style.html",
+                  context={"exception_description": f"Стиль под номером {current_style} не найден"})

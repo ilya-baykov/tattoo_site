@@ -34,12 +34,14 @@ class MainData:
 class TattooStyle:
     __TATTOO_STYLE_DICT = {}
     __PATH = r"C:\Users\ilyab\PycharmProjects\tattoo_site_1\coolsite\tattoo\templates\styles_info"
+    __TATTOO_STYLE_COUNTER = 0
 
     def __init__(self, position: int, style_en: str, style_ru: str, link_text="OldSchool"):
         self.__position = position
         self.__style_en = style_en
         self.__style_ru = style_ru
         self.__link_text = link_text
+        TattooStyle.__TATTOO_STYLE_COUNTER += 1
         TattooStyle.__TATTOO_STYLE_DICT.setdefault(self.__style_en.lower(), []).extend(
             [style_en, style_ru, TattooStyle.description(self), position])
 
@@ -61,14 +63,14 @@ class TattooStyle:
     @classmethod
     def tattoo_style_ru_list(cls) -> list:
         """
-        ['oldschool', 'newschool', 'realism', 'biomechanics', 'graphic', 'japanese', 'blackwork', 'lettering', 'chicano', 'ornamental']
+        ['традиционный стиль (олд скул)', 'нью скул', 'реализм', 'биомеханика', 'графика', 'японские татуировки', 'блэкворк', 'леттеринг', 'чикано', 'орнаментал']
         """
         return [stl[1].lower() for stl in TattooStyle.__TATTOO_STYLE_DICT.values()]
 
     @classmethod
     def tattoo_style_en_list(cls) -> list:
         """
-        ['традиционный стиль (олд скул)', 'нью скул', 'реализм', 'биомеханика', 'графика', 'японские татуировки', 'блэкворк', 'леттеринг', 'чикано', 'орнаментал']
+        ['oldschool', 'newschool', 'realism', 'biomechanics', 'graphic', 'japanese', 'blackwork', 'lettering', 'chicano', 'ornamental']
         """
         return [stl[0].lower() for stl in TattooStyle.__TATTOO_STYLE_DICT.values()]
 
@@ -83,6 +85,10 @@ class TattooStyle:
             return cls.tattoo_style_dict().get(style.lower())
         else:
             return f"Мы не знаем такой стиль  - {style}"
+
+    @classmethod
+    def tattoo_style_counter(cls):
+        return cls.__TATTOO_STYLE_COUNTER
 
     def __str__(self) -> str:
         return f"({self.__position}, {self.__style_en}, {self.__style_ru}"
