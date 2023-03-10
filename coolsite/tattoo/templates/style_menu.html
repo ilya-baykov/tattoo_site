@@ -4,7 +4,7 @@
     {% include "includes/navbar.html"%}
     <ul>
         {% for style , data_list in style_list.items %}
-            <a  href=""> {{data_list.3}} {{style|capfirst}} {{data_list.1}}</a><br>
+            <a  href="{% url 'link_current_style' style %}"> {{data_list.3}} {{style|capfirst}} {{data_list.1}}</a><br>
         {% endfor %}
     </ul>
 {% endblock %}
