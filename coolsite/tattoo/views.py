@@ -6,8 +6,6 @@ from django.urls import reverse
 
 
 # Create your views here.
-# translator = dict(zip([sc.TattooStyle.tattoo_style_en_list()], [sc.TattooStyle.tattoo_style_ru_list()]))
-
 
 def main_menu(request):
     contex = {
@@ -52,6 +50,6 @@ def current_style_int(request, current_style: int):
     counter_style = sc.TattooStyle.tattoo_style_counter()
     if counter_style >= current_style > 0:
         style_position = sc.TattooStyle.tattoo_style_en_list()[current_style - 1]
-        return HttpResponseRedirect(f"/tattoo/style/{style_position}")
+        return HttpResponseRedirect(reverse("link_current_style", args=(style_position,)))
     return render(request, "ex_current_style.html",
                   context={"exception_description": f"Стиль под номером {current_style} не найден"})
