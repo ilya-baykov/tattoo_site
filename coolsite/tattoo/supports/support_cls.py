@@ -19,9 +19,12 @@ class MainData:
     def description(self) -> str:
         """ Принимает ссылку на файл и возвращеает его текст """
         current_path = MainData.__PATH + f"\{self.__link_text}"
-        with open(current_path, "r", encoding="utf-8") as main_text:
-            content = main_text.read()
-            return content
+        try:
+            with open(current_path, "r", encoding="utf-8") as main_text:
+                content = main_text.read()
+                return content
+        except Exception:
+            return ":c"
 
     def __str__(self) -> str:
         return f"Экземпляр класса {self.__title} {self.__header} "
@@ -43,9 +46,12 @@ class TattooStyle:
     def description(self) -> str:
         """ Принимает ссылку на файл и возвращеает его текст """
         current_path = TattooStyle.__PATH + f"\{self.__link_text}"
-        with open(current_path, "r", encoding="utf-8") as style_text:
-            content = style_text.read()
-            return content
+        try:
+            with open(current_path, "r", encoding="utf-8") as style_text:
+                content = style_text.read()
+                return content
+        except Exception:
+            return ":c"
 
     @classmethod
     def tattoo_style_dict(cls) -> dict:
