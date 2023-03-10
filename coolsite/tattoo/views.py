@@ -33,17 +33,32 @@ def style_menu(request):
 
 
 def current_style_fn(request, current_style):
-    if sc.TattooStyle.availability_check(current_style):
-        info = sc.TattooStyle.get_info(current_style)
-        header = info[1]
-    else:
-        header = ""
-        info = ["", "", "", ""]
+    info = sc.TattooStyle.get_info(current_style)
+    if isinstance(info, str):
+        contex = {
+            "exception_description": info
+        }
+        return render(request, "ex_current_style.html", context=contex)
     contex = {
         "availability_check": True,
         "current_style_en": current_style,
-        "header": header,
+        "header": info[1],
         "description": info[2],
         "position": info[3]
     }
     return render(request, "current_style_info.html", context=contex)
+# def current_style_fn(request, current_style):
+#     if sc.TattooStyle.availability_check(current_style):
+#         info = sc.TattooStyle.get_info(current_style)
+#         header = info[1]
+#     else:
+#         header = ""
+#         info = ["", "", "", ""]
+#     contex = {
+#         "availability_check": True,
+#         "current_style_en": current_style,
+#         "header": header,
+#         "description": info[2],
+#         "position": info[3]
+#     }
+#     return render(request, "current_style_info.html", context=contex)

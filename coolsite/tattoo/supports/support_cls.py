@@ -72,21 +72,11 @@ class TattooStyle:
         return style.lower() in cls.tattoo_style_en_list()
 
     @classmethod
-    def get_info(cls, style) -> list:
+    def get_info(cls, style) -> list | str:
         if TattooStyle.availability_check(style):
             return cls.tattoo_style_dict().get(style.lower())
+        else:
+            return f"Мы не знаем такой стиль  - {style}"
 
     def __str__(self) -> str:
         return f"({self.__position}, {self.__style_en}, {self.__style_ru}"
-
-
-oldSchool = TattooStyle(1, "OldSchool", "Традиционный стиль (Олд Скул)", "OldSchool")
-newSchool = TattooStyle(2, "NewSchool", "Нью скул")
-realism = TattooStyle(3, "Realism", "Реализм")
-biomechanics = TattooStyle(4, "Biomechanics", "Биомеханика")
-graphic = TattooStyle(5, "Graphic", "Графика")
-japanese = TattooStyle(6, "Japanese", "Японские татуировки")
-blackwork = TattooStyle(7, "Blackwork", "Блэкворк")
-lettering = TattooStyle(8, "Lettering", "Леттеринг")
-chicano = TattooStyle(9, "Chicano", "Чикано")
-ornamental = TattooStyle(10, "Ornamental", "Орнаментал")
