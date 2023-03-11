@@ -1,5 +1,5 @@
 class MainData:
-    """ Класс хранит в себе информацию о title , header и описания страницы """
+    """ Класс хранит в себе информацию о title, header и описания страницы """
     __PATH = r"C:\Users\ilyab\PycharmProjects\tattoo_site_1\coolsite\tattoo\supports\texts"
 
     def __init__(self, title="Tattoo", header="", link_text=""):
@@ -18,12 +18,12 @@ class MainData:
     @property
     def description(self) -> str:
         """ Принимает ссылку на файл и возвращеает его текст """
-        current_path = MainData.__PATH + f"\{self.__link_text}"
+        current_path = MainData.__PATH + "\\" + self.__link_text
         try:
             with open(current_path, "r", encoding="utf-8") as main_text:
                 content = main_text.read()
                 return content
-        except Exception:
+        except FileNotFoundError:
             return ":c"
 
     def __str__(self) -> str:
@@ -47,36 +47,38 @@ class TattooStyle:
 
     def description(self) -> str:
         """ Принимает ссылку на файл и возвращеает его текст """
-        current_path = TattooStyle.__PATH + f"\{self.__link_text}"
+        current_path = TattooStyle.__PATH + "\\" + self.__link_text
         try:
             with open(current_path, "r", encoding="utf-8") as style_text:
                 content = style_text.read()
                 return content
-        except Exception:
+        except FileNotFoundError:
             return ":c"
 
     @classmethod
     def tattoo_style_dict(cls) -> dict:
-        """Возвращает словарь с иноформацией о всех стилях """
+        """Возвращает словарь с информацией о всех стилях """
         return cls.__TATTOO_STYLE_DICT
 
     @classmethod
     def tattoo_style_ru_list(cls) -> list:
         """
-        ['традиционный стиль (олд скул)', 'нью скул', 'реализм', 'биомеханика', 'графика', 'японские татуировки', 'блэкворк', 'леттеринг', 'чикано', 'орнаментал']
+        ['традиционный стиль (олд скул)', 'нью скул', 'реализм', 'биомеханика', 'графика', 'японские татуировки',
+         'блэкворк', 'леттеринг', 'чикано', 'орнаментал']
         """
         return [stl[1].lower() for stl in TattooStyle.__TATTOO_STYLE_DICT.values()]
 
     @classmethod
     def tattoo_style_en_list(cls) -> list:
         """
-        ['oldschool', 'newschool', 'realism', 'biomechanics', 'graphic', 'japanese', 'blackwork', 'lettering', 'chicano', 'ornamental']
+        ['oldschool', 'newschool', 'realism', 'biomechanics', 'graphic', 'japanese', 'blackwork', 'lettering',
+        'chicano', 'ornamental']
         """
         return [stl[0].lower() for stl in TattooStyle.__TATTOO_STYLE_DICT.values()]
 
     @classmethod
     def availability_check(cls, style: str):
-        """ Проверяет наличие style  в списке всех стилей """
+        """ Проверяет наличие style в списке всех стилей """
         return style.lower() in cls.tattoo_style_en_list()
 
     @classmethod

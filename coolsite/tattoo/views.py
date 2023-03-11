@@ -4,6 +4,8 @@ from .supports import instances_cls as inst
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from .templates.FAQ_text.FAQcls import *
+
 
 # Create your views here.
 
@@ -53,3 +55,23 @@ def current_style_int(request, current_style: int):
         return HttpResponseRedirect(reverse("link_current_style", args=(style_position,)))
     return render(request, "ex_current_style.html",
                   context={"exception_description": f"Стиль под номером {current_style} не найден"})
+
+
+def help_menu(request):
+    return render(request, "faq.html", context={})
+
+
+def faq_question(request, question):
+    all_pages_faq = {
+        "preparation": preparation,
+        "price": price,
+        "tattoo_care": tattoo_care,
+        "error": error_faq
+    }
+    # faq = all_pages_faq.get(question, "error_faq")
+    # contex = {
+    #     "title": faq.name,
+    #     "header":,
+    #     "description": 3
+    # }
+    # return render(request, "faq.html", context={})
