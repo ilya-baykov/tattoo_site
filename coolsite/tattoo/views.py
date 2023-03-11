@@ -61,17 +61,15 @@ def help_menu(request):
     return render(request, "faq.html", context={})
 
 
-def faq_question(request, question):
+def faq_question(request, question, ):
     all_pages_faq = {
         "preparation": preparation,
         "price": price,
         "tattoo_care": tattoo_care,
         "error": error_faq
     }
-    # faq = all_pages_faq.get(question, "error_faq")
-    # contex = {
-    #     "title": faq.name,
-    #     "header":,
-    #     "description": 3
-    # }
-    # return render(request, "faq.html", context={})
+    faq = all_pages_faq.get(question, "error_faq")
+    title = faq.name
+    header = faq.header
+    description = faq.description
+    return render(request, "faq.html", context={"title": title, "header": header, "description": description})
