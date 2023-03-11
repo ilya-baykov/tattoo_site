@@ -68,7 +68,7 @@ def faq_question(request, question, ):
         "tattoo_care": tattoo_care,
         "error": error_faq
     }
-    faq = all_pages_faq.get(question, "error_faq")
+    faq = all_pages_faq.get(question, error_faq)
     title = faq.name
     header = faq.header
     description = faq.description
