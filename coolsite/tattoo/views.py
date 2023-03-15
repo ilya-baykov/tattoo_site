@@ -58,7 +58,7 @@ def current_style_int(request, current_style: int):
 
 
 def help_menu(request):
-    return render(request, "faq.html", context={})
+    return render(request, "faq_info_menu.html", context={"title": "FAQ"})
 
 
 def faq_question(request, question, ):

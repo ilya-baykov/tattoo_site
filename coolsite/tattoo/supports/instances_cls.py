@@ -14,3 +14,4 @@ blackwork = TattooStyle(7, "Blackwork", "Блэкворк", "Blackwork")
 lettering = TattooStyle(8, "Lettering", "Леттеринг", "Lettering")
 chicano = TattooStyle(9, "Chicano", "Чикано", "Chicano")
 ornamental = TattooStyle(10, "Ornamental", "Орнаментал", "Ornamental")
+
