@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+
+
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'tattoo\css\base_style.css' %}">
+{% endblock %}
+
 {% block title %}
     {{title_info}}
 {% endblock %}
+
 
 {% block content %}
     {% include "includes/navbar.html"%}
