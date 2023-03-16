@@ -2,3 +2,10 @@ ul {
     border-left: 5px solid red;
     background-color: #f1f1f1;
 }
+
+a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+}
+nav a {
+    text-decoration: underline;
+}

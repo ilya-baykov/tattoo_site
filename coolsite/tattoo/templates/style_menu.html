@@ -4,12 +4,16 @@
 
 {% block css_additional %}
     <link rel="stylesheet" href="{% static 'tattoo\css\style_menu.css' %}">
+    <link rel="stylesheet" href="{% static 'tattoo\css\base_style.css' %}">
 {% endblock %}
 
 
 {% block title %} Styles {% endblock %}
 {% block content %}
     {% include "includes/navbar.html"%}
+    <h1>
+        {{header}}
+    </h1>
     <ul>
         {% for style , data_list in style_list.items %}
             <a  href="{% url 'link_current_style' style %}"> {{data_list.3}} {{style|capfirst}} {{data_list.1}}</a><br>
