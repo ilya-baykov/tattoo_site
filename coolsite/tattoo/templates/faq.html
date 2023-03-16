@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        {{title}}
-    </title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+
+{% block css_additional %}
+    <link rel="stylesheet" href="{% static 'tattoo\css\base_style.css'%}">
+{% endblock %}
+
+{% block content %}
     {% include "includes/navbar.html"%}
-    <h1>{{header}}</h1>
+    <h1>
+        {{header}}
+    </h1>
     {{description}}
-</body>
-</html>
+{% endblock %}
+
+
